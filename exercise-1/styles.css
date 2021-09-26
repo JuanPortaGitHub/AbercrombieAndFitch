@@ -1,0 +1,26 @@
+img {
+  width: 100px;
+  height: 100px;
+  margin-top: 10%;
+}
+span {
+  margin: 30px;
+  text-align: left;
+}
+
+li {
+  list-style: none;
+}
+
+.main-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  margin-right: 30px;
+}
+
+.details-container {
+  display: inline;
+}

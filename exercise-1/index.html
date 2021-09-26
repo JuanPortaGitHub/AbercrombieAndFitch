@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./handlebars-v4.7.7.js"></script>
+      <script>
+        
+          let url = "https://5dc588200bbd050014fb8ae1.mockapi.io/assessment";
+          let users
+        
+        function getListOfUsers(url) {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+              users = { data };
+              createHtml(users);
+            });
+        }
+
+        function createHtml(Data) {          
+          let Template = document.getElementById("Template").innerHTML;
+          let compiledTemplate = Handlebars.compile(Template);
+          let ourGeneratedHTML = compiledTemplate(Data);
+          let Container = document.getElementById("container");
+          Container.innerHTML = ourGeneratedHTML;
+        }
+
+        getListOfUsers(url);
+      </script>
+
+      <script id="Template" type="text/x-handlebars-template">
+        <ul>
+          {{#each data}}
+            <li>
+              <div>
+                <div><img src={{this.avatar}} /></div>
+                <div>
+                  <p><b>Name:</b> {{this.name}}</p>
+                  <p><b>CreatedAt:</b> {{this.createdAt}}</p>
+                  <p><b>ID:</b> {{this.id}}</p>
+                </div>
+              </div>
+
+            </li>
+          {{/each}}
+        </ul>
+      </script>
+  </head>
+  
+  
+  <html>
+    <body>
+      <p id="myDiv"></p>
+      <div>
+        <div id="container"></div>
+      </div>
+    </body>
+  </html>
+</html>
