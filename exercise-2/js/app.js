@@ -138,7 +138,6 @@
       );
     } else {
       var idx = completeTasksList.indexOf(label);
-      //console.log(idx);
       completeTasksList.splice(idx, 1);
       localStorage.setItem("completeTasks", JSON.stringify(completeTasksList));
     }
@@ -162,7 +161,6 @@
       completeTasksList.push(label);
       completedTasksHolder.appendChild(listItem);
     }
-    // console.log("Complete :"+completeTasksList+"\n Incomplete: "+incompleteTasksList);
     localStorage.setItem("completeTasks", JSON.stringify(completeTasksList));
     localStorage.setItem(
       "incompleteTasks",
